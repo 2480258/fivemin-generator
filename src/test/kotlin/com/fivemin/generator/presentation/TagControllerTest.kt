@@ -1,4 +1,4 @@
-package com.fivemin.generator.controller
+package com.fivemin.generator.presentation
 
 import com.fivemin.generator.model.ErrorCodeThrowable
 import com.fivemin.generator.model.TagRequestEntity

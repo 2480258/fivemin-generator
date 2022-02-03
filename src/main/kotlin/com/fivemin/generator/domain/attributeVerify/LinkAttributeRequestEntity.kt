@@ -1,4 +1,4 @@
-package com.fivemin.generator.model
+package com.fivemin.generator.domain.attributeVerify
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

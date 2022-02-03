@@ -1,3 +1,3 @@
-package com.fivemin.generator.model
+package com.fivemin.generator.domain.attributeVerify
 
 class NoParsedContentException(reason: String) : Exception(reason)

@@ -7,5 +7,6 @@ import org.springframework.boot.runApplication
 class GeneratorApplication
 
 fun main(args: Array<String>) {
+
     runApplication<GeneratorApplication>(*args)
 }

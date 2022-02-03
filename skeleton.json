@@ -1,0 +1,32 @@
+{
+  "requestFormat": {
+    "engines": [
+      {
+        "requesterEngineName": "Default",
+        "type": "Default",
+        "requesters": [
+          {
+            "userAgent": "TESTTESTTEST"
+          }
+        ]
+      }
+    ],
+    "cookiePolicies": []
+  },
+  "parseFormat": {
+    "bookName": "Debug",
+    "globalCondition": {
+      "uriRegex": "127.0.0.1:30001"
+    },
+    "pages": [
+    ],
+    "attributeRequester": {
+      "targetRequester": "Default"
+    }
+  },
+  "exportFormat": {
+    "bookName": "Debug",
+    "pages": [
+    ]
+  }
+}

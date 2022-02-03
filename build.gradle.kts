@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 group = "com.fivemin"
@@ -27,9 +28,13 @@ dependencies {
 
     implementation("org.jsoup:jsoup:1.14.3")
     implementation("io.github.microutils:kotlin-logging:2.1.21")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    testImplementation(kotlin("test"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:1.12.2")
 }
 
 tasks.withType<KotlinCompile> {

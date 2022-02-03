@@ -1,5 +1,6 @@
-package com.fivemin.generator.model
+package com.fivemin.generator.domain.attributeVerify
 
+import com.fasterxml.jackson.annotation.JsonRawValue
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -16,11 +17,11 @@ class InternalAttributeRequestEntity() {
 
     lateinit var html: String
 
-    constructor(_name: String, _queryStr: String, _parseMode: String, _html: String) : this() {
-        name = _name
-        queryStr = _queryStr
-        parseMode = _parseMode
+    constructor(name: String, queryStr: String, parseMode: String, html: String) : this() {
+        this.name = name
+        this.queryStr = queryStr
+        this.parseMode = parseMode
 
-        html = _html
+        this.html = html
     }
 }

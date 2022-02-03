@@ -1,9 +1,10 @@
-package com.fivemin.generator.controller
+package com.fivemin.generator.presentation
 
 import com.fivemin.generator.model.ErrorCodeThrowable
 import com.fivemin.generator.model.convertToStatus
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import javax.persistence.Column
@@ -26,6 +27,7 @@ class ErrorCodeWrapper() {
     lateinit var message: String
 }
 
+@CrossOrigin
 @RestControllerAdvice
 class ErrorController {
     @ExceptionHandler(ErrorCodeThrowable::class)

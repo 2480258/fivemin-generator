@@ -1,26 +1,24 @@
-package com.fivemin.generator.controller
+package com.fivemin.generator.service.attributeVerify
 
 import arrow.core.Either
 import arrow.core.flatten
 import com.fivemin.core.engine.Tag
 import com.fivemin.core.engine.TagFlag
 import com.fivemin.core.engine.transaction.TagSelector
-import com.fivemin.generator.model.* // ktlint-disable no-wildcard-imports
-import org.springframework.web.bind.annotation.* // ktlint-disable no-wildcard-imports
+import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
+import com.fivemin.generator.model.ErrorCodeThrowable
+import com.fivemin.generator.model.HttpErrorCode
+import com.fivemin.generator.model.TagRequestEntity
+import com.fivemin.generator.model.TagResultEntity
 import java.net.URI
-import java.util.EnumSet
+import java.util.*
 
-@RestController
-@RequestMapping("/api/preprocess/tag")
-class TagController {
+class TagVerifier {
     private fun tagToEntity(tag: Tag): TagResultEntity {
         return TagResultEntity(tag.name, tag.value, tag.flag)
     }
 
-    @PostMapping("with/url")
-    fun createTagFromURL(
-        request: TagRequestEntity
-    ): TagResultEntity {
+    fun verifyTag(request: TagRequestEntity): TagResultEntity {
         val selector = TagSelector(request.name, Regex(request.tagRegex), EnumSet.of(TagFlag.NONE))
 
         val urlInstance = Either.catch { // pre-check url parameter is really URL

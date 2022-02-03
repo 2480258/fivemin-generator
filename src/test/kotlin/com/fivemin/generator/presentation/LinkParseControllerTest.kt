@@ -1,7 +1,7 @@
-package com.fivemin.generator.controller
+package com.fivemin.generator.presentation
 
 import com.fivemin.generator.model.ErrorCodeThrowable
-import com.fivemin.generator.model.LinkAttributeRequestEntity
+import com.fivemin.generator.domain.attributeVerify.LinkAttributeRequestEntity
 import org.junit.jupiter.api.Assertions.* // ktlint-disable no-wildcard-imports
 import org.junit.jupiter.api.Test
 

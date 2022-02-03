@@ -1,24 +1,22 @@
-package com.fivemin.generator.controller
+package com.fivemin.generator.service.attributeVerify
 
 import arrow.core.toOption
 import com.fivemin.core.engine.ParserNavigator
 import com.fivemin.core.engine.transaction.serialize.postParser.LinkSelector
 import com.fivemin.core.engine.transaction.serialize.postParser.linkExtract.LinkParserImpl
 import com.fivemin.core.parser.HtmlParseableImpl
-import com.fivemin.generator.model.* // ktlint-disable no-wildcard-imports
+import com.fivemin.generator.domain.attributeVerify.AttributeResponseEntity
+import com.fivemin.generator.domain.attributeVerify.LinkAttributeRequestEntity
+import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
+import com.fivemin.generator.model.ErrorCodeThrowable
+import com.fivemin.generator.model.HttpErrorCode
 import org.jsoup.Jsoup
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
 import java.net.URI
 
-@RestController
-@RequestMapping("/api/preprocess/link")
-class LinkParseController {
+class LinkAttributeVerifier {
     private val extractor = LinkParserImpl()
 
-    @PostMapping("with/html")
-    fun createTextFromHtml(request: LinkAttributeRequestEntity): AttributeResponseEntity {
+    fun verifyLinkAttribute(request: LinkAttributeRequestEntity): AttributeResponseEntity {
         try {
             val parsable = HtmlParseableImpl(Jsoup.parse(request.html))
 
@@ -28,7 +26,7 @@ class LinkParseController {
             val result = extractor.parse(parsable, URI(request.hostUri), selector.toOption())
 
             val attributeConverted = if (!result.any()) {
-                throw NoParsedContentException("No parsed internal attribute")
+                throw NoParsedContentException("No parsed attribute")
             } else if (result.count() == 1) {
                 AttributeResponseEntity(request.name, result.first().absoluteUri.toString())
             } else {
