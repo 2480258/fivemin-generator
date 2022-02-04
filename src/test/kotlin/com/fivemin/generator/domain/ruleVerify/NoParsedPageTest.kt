@@ -1,6 +1,6 @@
 package com.fivemin.generator.domain.ruleVerify
 
-import com.fivemin.core.initialize.json.*
+import com.fivemin.generator.service.*
 import com.fivemin.generator.domain.NoParsedPage
 import com.fivemin.generator.domain.RuleMatchedErrorException
 import io.mockk.every

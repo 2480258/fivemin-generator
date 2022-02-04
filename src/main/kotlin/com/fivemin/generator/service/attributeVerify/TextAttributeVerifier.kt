@@ -2,23 +2,20 @@ package com.fivemin.generator.service.attributeVerify
 
 import arrow.core.left
 import arrow.core.right
-import com.fivemin.core.engine.ArrayMemoryData
-import com.fivemin.core.engine.HtmlMemoryDataImpl
-import com.fivemin.core.engine.ParserNavigator
-import com.fivemin.core.engine.StringMemoryDataImpl
-import com.fivemin.core.engine.parser.TextExtractorImpl
-import com.fivemin.core.engine.transaction.serialize.postParser.TextSelectionMode
-import com.fivemin.core.parser.HtmlDocumentFactoryImpl
 import com.fivemin.generator.domain.attributeVerify.AttributeResponseEntity
 import com.fivemin.generator.domain.attributeVerify.InternalAttributeRequestEntity
 import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
 import com.fivemin.generator.model.ErrorCodeThrowable
 import com.fivemin.generator.model.HttpErrorCode
+import com.fivemin.generator.service.HtmlDocumentFactory
+import com.fivemin.generator.service.ParserNavigator
+import com.fivemin.generator.service.TextExtractor
+import com.fivemin.generator.service.TextSelectionMode
 
 class TextAttributeVerifier {
 
-    private val selector = TextExtractorImpl()
-    private val htmlFactory = HtmlDocumentFactoryImpl()
+    private val selector = TextExtractor()
+    private val htmlFactory = HtmlDocumentFactory()
 
     private fun extractModeFromString(mode: String): TextSelectionMode {
         return when (mode) {
@@ -32,7 +29,7 @@ class TextAttributeVerifier {
     fun verifyTextAttribute(request: InternalAttributeRequestEntity): AttributeResponseEntity{
         val parserNavigator = ParserNavigator(request.queryStr)
 
-        val memoryData = HtmlMemoryDataImpl(StringMemoryDataImpl(ArrayMemoryData(Charsets.UTF_8.encode(request.html).array()), Charsets.UTF_8), htmlFactory)
+        val memoryData = htmlFactory.create(request.html)
 
         val result = selector.parse(memoryData, parserNavigator, extractModeFromString(request.parseMode))
 

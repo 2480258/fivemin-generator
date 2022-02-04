@@ -2,10 +2,6 @@ package com.fivemin.generator.presentation
 
 import arrow.core.left
 import arrow.core.right
-import com.fivemin.core.engine.* // ktlint-disable no-wildcard-imports
-import com.fivemin.core.engine.parser.TextExtractorImpl
-import com.fivemin.core.engine.transaction.serialize.postParser.TextSelectionMode
-import com.fivemin.core.parser.HtmlDocumentFactoryImpl
 import com.fivemin.generator.domain.attributeVerify.AttributeResponseEntity
 import com.fivemin.generator.domain.attributeVerify.InternalAttributeRequestEntity
 import com.fivemin.generator.domain.attributeVerify.NoParsedContentException

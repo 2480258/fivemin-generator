@@ -1,11 +1,13 @@
 package com.fivemin.generator.domain.ruleVerify
 
-import com.fivemin.core.initialize.json.JsonOptionFormat
-import com.fivemin.core.initialize.json.JsonParserInternalAttributeFormat
-import com.fivemin.core.initialize.json.JsonParserPageFormat
-import com.fivemin.core.initialize.json.JsonPrePostParserFormat
+
+import com.fivemin.generator.service.JsonOptionFormat
+
 import com.fivemin.generator.domain.AttributeNameShouldUnique
 import com.fivemin.generator.domain.RuleMatchedErrorException
+import com.fivemin.generator.service.JsonParserInternalAttributeFormat
+import com.fivemin.generator.service.JsonParserPageFormat
+import com.fivemin.generator.service.JsonPrePostParserFormat
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test

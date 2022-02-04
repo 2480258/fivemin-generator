@@ -1,8 +1,6 @@
 package com.fivemin.generator.domain.ruleVerify
 
-import com.fivemin.core.initialize.json.JsonOptionFormat
-import com.fivemin.core.initialize.json.JsonParserPageFormat
-import com.fivemin.core.initialize.json.JsonPrePostParserFormat
+import com.fivemin.generator.service.*
 import com.fivemin.generator.domain.PageShouldUnique
 import com.fivemin.generator.domain.RuleMatchedErrorException
 import io.mockk.every

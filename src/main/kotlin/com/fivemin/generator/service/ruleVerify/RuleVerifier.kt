@@ -2,7 +2,7 @@ package com.fivemin.generator.domain
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-import com.fivemin.core.initialize.json.JsonOptionFormat
+import com.fivemin.generator.service.JsonOptionFormat
 
 data class VerifyResult(val collectedMessages: List<String>, val notExecutedRules: List<String>)
 

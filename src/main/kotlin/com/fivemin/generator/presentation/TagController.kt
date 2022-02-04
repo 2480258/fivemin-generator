@@ -2,9 +2,6 @@ package com.fivemin.generator.presentation
 
 import arrow.core.Either
 import arrow.core.flatten
-import com.fivemin.core.engine.Tag
-import com.fivemin.core.engine.TagFlag
-import com.fivemin.core.engine.transaction.TagSelector
 import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
 import com.fivemin.generator.model.* // ktlint-disable no-wildcard-imports
 import com.fivemin.generator.service.attributeVerify.TagVerifier

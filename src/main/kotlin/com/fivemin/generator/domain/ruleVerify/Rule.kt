@@ -1,6 +1,6 @@
 package com.fivemin.generator.domain
 
-import com.fivemin.core.initialize.json.JsonOptionFormat
+import com.fivemin.generator.service.JsonOptionFormat
 
 class RuleMatchedErrorException(message: String) : Exception(message)
 

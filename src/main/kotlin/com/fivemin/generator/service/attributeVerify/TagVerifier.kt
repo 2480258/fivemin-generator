@@ -2,14 +2,14 @@ package com.fivemin.generator.service.attributeVerify
 
 import arrow.core.Either
 import arrow.core.flatten
-import com.fivemin.core.engine.Tag
-import com.fivemin.core.engine.TagFlag
-import com.fivemin.core.engine.transaction.TagSelector
 import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
 import com.fivemin.generator.model.ErrorCodeThrowable
 import com.fivemin.generator.model.HttpErrorCode
 import com.fivemin.generator.model.TagRequestEntity
 import com.fivemin.generator.model.TagResultEntity
+import com.fivemin.generator.service.Tag
+import com.fivemin.generator.service.TagFlag
+import com.fivemin.generator.service.TagSelector
 import java.net.URI
 import java.util.*
 

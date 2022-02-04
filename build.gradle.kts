@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation(files("/lib/FiveMinCrawler-0.jar"))
+    //implementation(files("/lib/FiveMinCrawler-0.jar"))
 
     implementation("io.arrow-kt:arrow-core:1.0.1")
     implementation("org.springframework.boot:spring-boot-starter-web")

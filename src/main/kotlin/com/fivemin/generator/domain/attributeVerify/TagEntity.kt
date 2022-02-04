@@ -1,6 +1,6 @@
 package com.fivemin.generator.model
 
-import com.fivemin.core.engine.TagFlag
+import com.fivemin.generator.service.TagFlag
 import java.util.EnumSet
 import javax.persistence.* // ktlint-disable no-wildcard-imports
 
