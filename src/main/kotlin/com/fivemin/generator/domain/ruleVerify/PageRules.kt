@@ -27,9 +27,7 @@ class PageShouldUnique : JsonRule {
         }.extractNotUnique()
 
         if (notUniqueNames.any()) {
-            throw RuleMatchedErrorException("Duplicated page name: " + notUniqueNames.keys.fold("") { f, s ->
-                "$f, $s"
-            } + "\nMake sure to use different page name.")
+            throw RuleMatchedErrorException("Duplicated page name: " + notUniqueNames.keys.joinToString() + "\nMake sure to use different page name.")
         }
     }
 
@@ -61,9 +59,7 @@ class ExportPageMatchesWithCurrentPage : JsonRule {
         }
 
         if (notUsedExports.any()) {
-            throw RuleMatchedErrorException("Not used export pages -> " + notUsedExports.fold("") { f, s ->
-                "$f, $s"
-            } + "\nMake sure to point valid page name. ")
+            throw RuleMatchedErrorException("Not used export pages -> " + notUsedExports.joinToString() + "\nMake sure to point valid page name. ")
         }
     }
 
@@ -103,12 +99,8 @@ class AttributeNameShouldUnique : JsonRule {
 
         if (duplicated_page_attribute.isNotEmpty()) {
             val message = duplicated_page_attribute.map {
-                "Page: " + it.first + ", attributes" + it.second.keys.fold("") { f, s ->
-                    "$f, $s"
-                }
-            }.fold("") { f, s ->
-                "$f\n$s"
-            }
+                "Page: " + it.first + ", attributes" + it.second.keys.joinToString(", ", "[", "]")
+            }.joinToString()
 
             throw RuleMatchedErrorException("Duplicated attributes -> \n$message")
         }
@@ -156,12 +148,8 @@ class ExportTargettedAttributeMatches : JsonRule {
 
         if (results.isNotEmpty()) {
             val message = results.map {
-                "Export Page: " + it.key + ", targetted attributes" + it.value.fold("") { f, s ->
-                    "$f, $s"
-                }
-            }.fold("") { f, s ->
-                "$f\n$s"
-            }
+                "Export Page: " + it.key + ", targetted attributes" + it.value.joinToString(", ", "[", "]")
+            }.joinToString("\n")
 
             throw RuleMatchedErrorException("Invalid target attributes -> \n$message")
         }
@@ -203,9 +191,7 @@ class ExternalAttributeWithJsonParse : JsonRule {
         }
 
         if (externalWithJson.any()) {
-            throw RuleMatchedErrorException("Exterenal attribute attached to json: " + externalWithJson.keys.fold("") { f, s ->
-                "$f, $s"
-            })
+            throw RuleMatchedErrorException("Exterenal attribute attached to json: " + externalWithJson.keys.joinToString())
         }
     }
 
@@ -230,9 +216,7 @@ class TagNameNotMatchWithFileExpression : JsonRule {
         }
 
         if(tag.any()) {
-            throw RuleMatchedErrorException("File expression does not contain any tags! Files will have fixed name and may duplicate: " + tag.fold("") { f, s ->
-                "$f, $s"
-            })
+            throw RuleMatchedErrorException("File expression does not contain any tags! Files will have fixed name and may duplicate: " + tag.joinToString())
         }
     }
 
