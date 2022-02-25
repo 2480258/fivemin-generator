@@ -1,4 +1,4 @@
-package com.fivemin.generator.domain
+package com.fivemin.generator.model
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 

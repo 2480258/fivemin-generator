@@ -2,9 +2,9 @@ package com.fivemin.generator.service.attributeVerify
 
 import arrow.core.left
 import arrow.core.right
-import com.fivemin.generator.domain.attributeVerify.AttributeResponseEntity
-import com.fivemin.generator.domain.attributeVerify.InternalAttributeRequestEntity
-import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
+import com.fivemin.generator.model.attributeVerify.AttributeResponseEntity
+import com.fivemin.generator.model.attributeVerify.InternalAttributeRequestEntity
+import com.fivemin.generator.model.attributeVerify.NoParsedContentException
 import com.fivemin.generator.model.ErrorCodeThrowable
 import com.fivemin.generator.model.HttpErrorCode
 import com.fivemin.generator.service.HtmlDocumentFactory

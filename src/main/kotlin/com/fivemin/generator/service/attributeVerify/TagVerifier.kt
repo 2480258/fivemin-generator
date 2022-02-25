@@ -2,7 +2,7 @@ package com.fivemin.generator.service.attributeVerify
 
 import arrow.core.Either
 import arrow.core.flatten
-import com.fivemin.generator.domain.attributeVerify.NoParsedContentException
+import com.fivemin.generator.model.attributeVerify.NoParsedContentException
 import com.fivemin.generator.model.ErrorCodeThrowable
 import com.fivemin.generator.model.HttpErrorCode
 import com.fivemin.generator.model.TagRequestEntity
