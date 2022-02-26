@@ -10,11 +10,11 @@ class InternalAttributeRequestEntity() {
     @GeneratedValue
     open var id: Long? = null
 
-    lateinit var name: String
-    lateinit var queryStr: String
-    lateinit var parseMode: String
+    var name: String? = null
+    var queryStr: String? = null
+    var parseMode: String? = null
 
-    lateinit var html: String
+    var html: String? = null
 
     constructor(name: String, queryStr: String, parseMode: String, html: String) : this() {
         this.name = name

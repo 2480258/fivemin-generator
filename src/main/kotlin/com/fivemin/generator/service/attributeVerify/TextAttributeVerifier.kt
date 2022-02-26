@@ -27,18 +27,22 @@ class TextAttributeVerifier {
     }
 
     fun verifyTextAttribute(request: InternalAttributeRequestEntity): AttributeResponseEntity{
-        val parserNavigator = ParserNavigator(request.queryStr)
+        if(request.name == null || request.html == null || request.parseMode == null || request.queryStr == null) {
+            throw ErrorCodeThrowable(HttpErrorCode.BAD_REQUEST, "Please check your form. Name, html, parseMode, queryStr should be filled")
+        }
 
-        val memoryData = htmlFactory.create(request.html)
+        val parserNavigator = ParserNavigator(request.queryStr!!)
 
-        val result = selector.parse(memoryData, parserNavigator, extractModeFromString(request.parseMode))
+        val memoryData = htmlFactory.create(request.html!!)
+
+        val result = selector.parse(memoryData, parserNavigator, extractModeFromString(request.parseMode!!))
 
         val attributeConverted = if (!result.any()) {
             NoParsedContentException("No parsed attribute").left()
         } else if (result.count() == 1) {
-            AttributeResponseEntity(request.name, result.first()).right()
+            AttributeResponseEntity(request.name!!, result.first()).right()
         } else {
-            AttributeResponseEntity(request.name, result.toList()).right()
+            AttributeResponseEntity(request.name!!, result.toList()).right()
         }
 
         return attributeConverted.fold({
