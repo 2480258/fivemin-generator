@@ -18,11 +18,11 @@ class LinkAttributeRequestEntity() {
     @GeneratedValue
     var id: Long? = null
 
-    var name: String? = null
-    var queryStr: String? = null
-    var hostUri: String? = null
+    lateinit var name: String
+    lateinit var queryStr: String
+    lateinit var hostUri: String
 
     var uriRegex: String? = null
 
-    var html: String? = null
+    lateinit var html: String
 }

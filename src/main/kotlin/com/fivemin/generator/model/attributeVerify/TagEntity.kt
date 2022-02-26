@@ -26,9 +26,9 @@ class TagRequestEntity() {
     @GeneratedValue
     var id: Long? = null
 
-    var name: String? = null
-    var url: String? = null
-    var tagRegex: String? = null
+    lateinit var name: String
+    lateinit var url: String
+    lateinit var tagRegex: String
 
     constructor(_name: String, _url: String, _tagRegex: String) : this() {
         name = _name

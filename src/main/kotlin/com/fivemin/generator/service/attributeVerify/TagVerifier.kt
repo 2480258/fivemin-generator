@@ -19,14 +19,14 @@ class TagVerifier {
     }
 
     fun verifyTag(request: TagRequestEntity): TagResultEntity {
-        if (request.name == null || request.tagRegex == null || request.url == null){
+        if (request.name == "" || request.tagRegex == "" || request.url == ""){
             throw ErrorCodeThrowable(HttpErrorCode.BAD_REQUEST, "Please check your form. Name, TagRegex, URL")
         }
 
-        val selector = TagSelector(request.name!!, Regex(request.tagRegex!!), EnumSet.of(TagFlag.NONE))
+        val selector = TagSelector(request.name, Regex(request.tagRegex), EnumSet.of(TagFlag.NONE))
 
         val urlInstance = Either.catch { // pre-check url parameter is really URL
-            URI(request.url!!)
+            URI(request.url)
         }
 
         val result = urlInstance.map {

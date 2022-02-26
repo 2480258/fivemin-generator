@@ -18,13 +18,13 @@ class LinkAttributeVerifier {
 
     fun verifyLinkAttribute(request: LinkAttributeRequestEntity): AttributeResponseEntity {
         try {
-            if(request.name == null || request.html == null || request.hostUri == null || request.queryStr == null) {
+            if(request.name == "" || request.html == "" || request.hostUri == "" || request.queryStr == "") {
                 throw ErrorCodeThrowable(HttpErrorCode.BAD_REQUEST, "Please check your form. Name, html, hostUri, queryStr should be filled")
             }
 
-            val parsable = HtmlParsable(Jsoup.parse(request.html!!))
+            val parsable = HtmlParsable(Jsoup.parse(request.html))
 
-            val parserNavigator = ParserNavigator(request.queryStr!!)
+            val parserNavigator = ParserNavigator(request.queryStr)
             val selector = LinkSelector(parserNavigator, request.uriRegex.toOption().map { Regex(it) })
 
             val result = extractor.parse(parsable, URI(request.hostUri), selector.toOption())
@@ -32,10 +32,10 @@ class LinkAttributeVerifier {
             val attributeConverted = if (!result.any()) {
                 throw NoParsedContentException("No parsed attribute")
             } else if (result.count() == 1) {
-                AttributeResponseEntity(request.name!!, result.first().absoluteUri.toString())
+                AttributeResponseEntity(request.name, result.first().absoluteUri.toString())
             } else {
                 AttributeResponseEntity(
-                    request.name!!,
+                    request.name,
                     result.map {
                         it.absoluteUri.toString()
                     }.toList()
