@@ -6,6 +6,34 @@ plugins {
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     kotlin("plugin.serialization") version "1.6.10"
+    jacoco
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+}
+
+tasks.jacocoTestReport {
+    reports {
+        html.isEnabled = false
+        xml.isEnabled = true
+        csv.isEnabled = false
+        xml.destination = file("./jacocoTestReport.xml")
+    }
+
+    finalizedBy("jacocoTestCoverageVerification")
+}
+
+val testCoverage by tasks.registering {
+    group = "verification"
+    description = "Runs the unit tests with coverage"
+
+    dependsOn(":test",
+        ":jacocoTestReport",
+        ":jacocoTestCoverageVerification")
+
+    tasks["jacocoTestReport"].mustRunAfter(tasks["test"])
+    tasks["jacocoTestCoverageVerification"].mustRunAfter(tasks["jacocoTestReport"])
 }
 
 group = "com.fivemin"
